@@ -1,0 +1,25 @@
+---
+title: ""
+output: html_document
+---
+###Future planning
+An exploration of future options - primarily financial.
+
+```{r data, warning=FALSE, message=FALSE}
+library(tidyverse)
+data <-read_csv("data/ret.csv")
+data$year <- as.character(data$year)
+data
+data <- data %>% mutate(proportion = monthly/10000)
+
+```
+
+###Data Viz
+```{r data viz, warning=FALSE, message=FALSE}
+ggplot(data, aes(year, total)) + geom_point(color = "chartreuse4", size = 2)
+
+ggplot(data, aes(year, monthly)) + geom_point(color = "chartreuse4", size = 2)
+
+ggplot(data, aes(year, proportion)) + geom_bar(fill = "chartreuse4", stat = "identity") + ylab("proportion of current")
+
+```
