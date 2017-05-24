@@ -9,8 +9,9 @@ An exploration of future options - primarily financial.
 library(tidyverse)
 data <-read_csv("data/ret.csv")
 data$year <- as.character(data$year)
+data <- data %>% mutate(proportion = monthly/10000) 
+data <- data %>% mutate(difference = c(0, diff(data$proportion, lag = 1)))
 data
-data <- data %>% mutate(proportion = monthly/10000)
 
 ```
 
@@ -20,6 +21,13 @@ ggplot(data, aes(year, total)) + geom_point(color = "chartreuse4", size = 2)
 
 ggplot(data, aes(year, monthly)) + geom_point(color = "chartreuse4", size = 2)
 
-ggplot(data, aes(year, proportion)) + geom_bar(fill = "chartreuse4", stat = "identity") + ylab("proportion of current") + ylim(0,1)
+ggplot(data, aes(year, proportion)) + geom_bar(fill = "chartreuse4", stat = "identity") + ylab("proportion of current monthly") + ylim(0,1)
+
+ggplot(data, aes(year, difference)) + geom_bar(fill = "chartreuse4", stat = "identity") + ylab("annual increase in current monthly proportions of current")
 
 ```
+
+###Interpretation
+1. Primarily a linear, monotonic function in total.  
+2. The early retirement penalty, applied monthly, is reduced beginning 2030.  
+3. Do not retire before 2030.
