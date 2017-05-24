@@ -20,6 +20,6 @@ ggplot(data, aes(year, total)) + geom_point(color = "chartreuse4", size = 2)
 
 ggplot(data, aes(year, monthly)) + geom_point(color = "chartreuse4", size = 2)
 
-ggplot(data, aes(year, proportion)) + geom_bar(fill = "chartreuse4", stat = "identity") + ylab("proportion of current")
+ggplot(data, aes(year, proportion)) + geom_bar(fill = "chartreuse4", stat = "identity") + ylab("proportion of current") + ylim(0,1)
 
 ```
