@@ -11,7 +11,7 @@ data <-read_csv("data/ret.csv")
 data$year <- as.character(data$year)
 data <- data %>% mutate(proportion = monthly/10000) 
 data <- data %>% mutate(difference = c(0, diff(data$proportion, lag = 1)))
-data
+#data
 
 ```
 
